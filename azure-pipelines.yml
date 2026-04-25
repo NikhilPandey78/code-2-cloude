@@ -1,0 +1,28 @@
+trigger:
+  branches:
+    include:
+      - uat
+
+stages:
+  - stage: __default
+    jobs:
+      - job: Job
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - checkout: self
+            clean: true
+
+          - script: |
+              mkdir -p $(Build.ArtifactStagingDirectory)/artifact
+              rsync -av \
+                --exclude='azure-pipelines.yml' \
+                --exclude='.gitignore' \
+                --exclude='README.md' \
+                . $(Build.ArtifactStagingDirectory)/artifact/
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(Build.ArtifactStagingDirectory)/artifact'
+              publishLocation: 'pipeline'
+              artifactName: 'drop'

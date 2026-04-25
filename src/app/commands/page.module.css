@@ -1,0 +1,189 @@
+.commandsMain {
+  display: grid;
+  gap: 34px;
+  padding-top: 30px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.commandsHero {
+  display: grid;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.commandsHero h1 {
+  color: #122b47;
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.commandsHero p {
+  color: #4f647d;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.commandsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.communitySection {
+  display: grid;
+  gap: 22px;
+}
+
+.communityHeader {
+  display: grid;
+  gap: 10px;
+  max-width: 760px;
+}
+
+.communityHeader h2 {
+  color: #122b47;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.05;
+}
+
+.communityHeader p {
+  color: #4f647d;
+  line-height: 1.8;
+}
+
+.commandCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+}
+
+.communityMeta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  color: #5e7187;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.cardCode {
+  width: 100%;
+  overflow-x: auto;
+  padding: 16px 18px;
+  margin: 20px 0;
+  border-radius: 18px;
+  background: #122b47;
+  color: #f8fbff;
+  font-family: var(--font-geist-mono);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  border: 1px solid rgba(18, 43, 71, 0.08);
+}
+
+.commandCard .viewButton {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.commandCard .viewButton {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.viewButton {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.15rem;
+  border-radius: 14px;
+  background: rgba(18, 43, 71, 0.08);
+  color: #122b47;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.contributeLink {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.2rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #122b47 0%, #2d5b8f 100%);
+  color: #fef6e7;
+  font-weight: 700;
+  box-shadow: 0 16px 28px rgba(18, 43, 71, 0.14);
+}
+
+.adminLink {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.2rem;
+  border: 1px solid rgba(18, 43, 71, 0.14);
+  border-radius: 14px;
+  background: #fffdf9;
+  color: #122b47;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.deleteForm {
+  margin-top: 12px;
+}
+
+.deleteButton {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #a52a2a;
+  color: #fff7f5;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 22px rgba(165, 42, 42, 0.18);
+}
+
+@media (max-width: 1400px) {
+  .commandsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .commandsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .commandsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .commandsGrid {
+    grid-template-columns: 1fr;
+  }
+}

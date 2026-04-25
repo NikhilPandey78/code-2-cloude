@@ -1,0 +1,120 @@
+.main {
+  display: grid;
+  gap: 28px;
+  max-width: 760px;
+}
+
+.hero {
+  display: grid;
+  gap: 16px;
+}
+
+.hero h1 {
+  color: #122b47;
+  font-size: clamp(2.1rem, 4vw, 3.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.hero p {
+  color: #4f647d;
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+
+.card {
+  display: grid;
+  gap: 18px;
+  padding: 30px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(18, 43, 71, 0.1);
+  box-shadow: 0 20px 48px rgba(18, 43, 71, 0.08);
+}
+
+.card h2 {
+  margin: 0;
+  color: #122b47;
+}
+
+.card p {
+  color: #4f647d;
+  line-height: 1.7;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field span {
+  color: #122b47;
+  font-weight: 700;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid rgba(18, 43, 71, 0.14);
+  border-radius: 16px;
+  padding: 0.95rem 1rem;
+  background: #fffdf9;
+  color: #122b47;
+  font: inherit;
+}
+
+.submitButton {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 16px;
+  padding: 0.9rem 1.25rem;
+  background: linear-gradient(135deg, #122b47 0%, #2d5b8f 100%);
+  color: #fef6e7;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.submitButton:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.secondaryButton {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(18, 43, 71, 0.18);
+  border-radius: 16px;
+  padding: 0.9rem 1.25rem;
+  background: #fffdf9;
+  color: #122b47;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.errorMessage {
+  margin: 0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(181, 48, 48, 0.08);
+  color: #8d2020;
+  font-weight: 600;
+}
