@@ -4,10 +4,14 @@ import { cookies } from "next/headers";
 
 const SUPERADMIN_COOKIE = "code2cloud_superadmin";
 
+export async function getSuperadminSecret() {
+  return process.env.SUPERADMIN_PASSWORD?.trim() ?? "";
+}
+
 export async function isSuperadmin() {
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(SUPERADMIN_COOKIE)?.value;
-  const secret = process.env.SUPERADMIN_PASSWORD;
+  const secret = await getSuperadminSecret();
 
   if (!secret) {
     return false;
