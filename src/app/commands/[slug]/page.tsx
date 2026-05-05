@@ -60,6 +60,21 @@ export default async function CommandDetailPage(props: CommandDetailPageProps) {
           </article>
         </section>
 
+        {command.steps ? (
+          <section className={styles.stepsSection}>
+            <h2>Production Deployment Setup</h2>
+            <div className={styles.stepsGrid}>
+              {command.steps.map((step) => (
+                <article key={step.title} className={styles.stepCard}>
+                  <h3>{step.title}</h3>
+                  <code className={styles.detailCode}>{step.command}</code>
+                  <p>{step.details}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <Link href="/commands" className={styles.backLink}>
           Back to All Commands
         </Link>

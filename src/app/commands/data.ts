@@ -4,15 +4,77 @@ export type CommandCard = {
   description: string;
   command: string;
   details: string;
+  steps?: {
+    title: string;
+    command: string;
+    details: string;
+  }[];
 };
 
 export const commandCards: CommandCard[] = [
   {
     slug: "React",
     title: "React",
-    description: "Start the deployment using all helpful commands and tools.",
-    command: "npm run dev",
-    details: "Use this while building the app locally so changes appear immediately in the browser.",
+    description: "Full production deployment setup for a React or Next.js project.",
+    command: "npm ci && npm run build && npm run start",
+    details:
+      "Use this production flow after development is complete. It installs exact dependencies, checks the app, creates an optimized build, and runs the production server before deployment.",
+    steps: [
+      {
+        title: "1. Install exact dependencies",
+        command: "npm ci",
+        details:
+          "Use this in production or CI so dependencies match package-lock.json exactly.",
+      },
+      {
+        title: "2. Create the environment file",
+        command: "copy .env.example .env.local",
+        details:
+          "Add required production values in .env.local for local testing. In Vercel, add the same values in Project Settings > Environment Variables.",
+      },
+      {
+        title: "3. Run code quality checks",
+        command: "npm run lint",
+        details:
+          "Fix lint errors before building so deployment does not fail later in CI or Vercel.",
+      },
+      {
+        title: "4. Build the production app",
+        command: "npm run build",
+        details:
+          "Creates the optimized production output and catches TypeScript or route errors.",
+      },
+      {
+        title: "5. Test the production server locally",
+        command: "npm run start",
+        details:
+          "Open http://localhost:3000 and verify the important pages before pushing.",
+      },
+      {
+        title: "6. Commit the production-ready code",
+        command: "git status && git add . && git commit -m \"prepare production deployment\"",
+        details:
+          "Review changed files, stage the final work, and save it in Git history.",
+      },
+      {
+        title: "7. Push to the production branch",
+        command: "git push origin main",
+        details:
+          "For a Git-connected Vercel project, pushing to main starts the production deployment.",
+      },
+      {
+        title: "8. Deploy with Vercel CLI when needed",
+        command: "npx vercel --prod",
+        details:
+          "Use this when deploying manually instead of relying on the Git integration.",
+      },
+      {
+        title: "9. Verify the live deployment",
+        command: "curl -I https://your-domain.com",
+        details:
+          "Confirm the live site responds successfully, then test core pages in the browser.",
+      },
+    ],
   },
   {
     slug: "PHP",
