@@ -97,33 +97,6 @@
   margin-left: 0.5rem;
 }
 
-.contributeButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #122b47 0%, #2d5b8f 100%);
-  color: #fef6e7;
-  font-weight: 700;
-  box-shadow: 0 12px 24px rgba(18, 43, 71, 0.16);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.contributeButton:hover,
-.contributeButton:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 16px 28px rgba(18, 43, 71, 0.2);
-}
-
-.contributeButton:focus-visible {
-  outline: 2px solid rgba(45, 91, 143, 0.35);
-  outline-offset: 2px;
-}
-
 @media (max-width: 768px) {
   .container {
     width: min(100%, calc(100% - 24px));
