@@ -96,16 +96,9 @@ set PORT=4000 && npm run start
 
 ### 9. Optional environment variables
 
-Create a `.env.local` file for local secrets:
-
-```bash
-SUPERADMIN_PASSWORD=change_this_password
-BLOB_READ_WRITE_TOKEN=vercel_blob_rw_token_for_persistent_uploads
-```
-
-Use the same variables in your hosting provider dashboard when deploying. The
-contribution upload feature stores files in `public/contributions` locally, and
-uses Vercel Blob when `BLOB_READ_WRITE_TOKEN` is configured.
+Create a `.env.local` file for local secrets if future features need private
+configuration, and add the same variables in your hosting provider dashboard
+when deploying.
 
 ## Recommended Deployment Checklist
 

@@ -30,9 +30,6 @@ export default function Header() {
         </nav>
 
         <div className={styles.headerActions}>
-          <Link href="/contribute" className={styles.contributeButton}>
-            Contribute
-          </Link>
           <SimpleSearch />
         </div>
       </div>
