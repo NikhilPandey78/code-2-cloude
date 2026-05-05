@@ -27,6 +27,10 @@ function hasBlobStore() {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN?.trim());
 }
 
+function isVercelDeployment() {
+  return process.env.VERCEL === "1";
+}
+
 function getLocalContributionDirectory() {
   return path.join(process.cwd(), "public", contributionPrefix);
 }
@@ -60,6 +64,12 @@ export async function saveContribution({
     );
 
     return documentBlob.url;
+  }
+
+  if (isVercelDeployment()) {
+    throw new Error(
+      "BLOB_READ_WRITE_TOKEN is not configured in the deployment environment."
+    );
   }
 
   const uploadDirectory = getLocalContributionDirectory();

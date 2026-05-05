@@ -19,7 +19,10 @@ export async function loginSuperadmin(
   const secret = await getSuperadminSecret();
 
   if (!secret) {
-    return { error: "SUPERADMIN_PASSWORD is not configured." };
+    return {
+      error:
+        "SUPERADMIN_PASSWORD is not configured in the deployment environment.",
+    };
   }
 
   if (password !== secret) {

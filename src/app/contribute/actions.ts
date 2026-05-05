@@ -55,18 +55,29 @@ export async function submitContribution(
   const safeTitle = toSlug(title) || "command";
   const timestamp = Date.now();
   const documentName = `${safeTitle}-${safeContributor}-${timestamp}${extension}`;
-  const documentUrl = await saveContribution({
-    documentName,
-    file,
-    metadata: {
-      contributor,
-      title,
-      notes,
-      originalFileName: file.name,
-      storedFileName: documentName,
-      submittedAt: new Date(timestamp).toISOString(),
-    },
-  });
+  let documentUrl: string;
+
+  try {
+    documentUrl = await saveContribution({
+      documentName,
+      file,
+      metadata: {
+        contributor,
+        title,
+        notes,
+        originalFileName: file.name,
+        storedFileName: documentName,
+        submittedAt: new Date(timestamp).toISOString(),
+      },
+    });
+  } catch (error) {
+    return {
+      error:
+        error instanceof Error
+          ? error.message
+          : "Contribution upload failed. Please try again.",
+    };
+  }
 
   revalidatePath("/commands");
 
