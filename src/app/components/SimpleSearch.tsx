@@ -126,7 +126,7 @@ export default function SimpleSearch() {
             </>
           ) : (
             <div className={styles.noResults}>
-              No results for "{query}"
+              No results for &quot;{query}&quot;
             </div>
           )}
         </div>

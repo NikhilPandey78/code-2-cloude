@@ -30,7 +30,7 @@ export default function Home() {
             <h2>What is Code2Cloud?</h2>
             <p>
               Code2Cloud is a beginner-friendly, comprehensive reference website
-              designed for developers and DevOps engineers. Whether you're learning
+              designed for developers and DevOps engineers. Whether you&apos;re learning
               your first programming language, mastering cloud deployment, or
               optimizing your CI/CD pipeline, this website provides practical,
               real-world commands and workflows in one easy-to-access place.

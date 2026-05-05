@@ -1,7 +1,8 @@
 "use server";
 
-import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { revalidatePath } from "next/cache";
+import { saveContribution } from "./contributions";
 
 type ContributionState = {
   error?: string;
@@ -10,7 +11,7 @@ type ContributionState = {
 };
 
 const allowedExtensions = new Set([".md", ".txt", ".pdf", ".doc", ".docx"]);
-const maxFileSize = 10 * 1024 * 1024;
+const maxFileSize = 4 * 1024 * 1024;
 
 function toSlug(value: string) {
   return value
@@ -40,7 +41,7 @@ export async function submitContribution(
   }
 
   if (file.size > maxFileSize) {
-    return { error: "Please upload a document smaller than 10 MB." };
+    return { error: "Please upload a document smaller than 4 MB." };
   }
 
   const extension = path.extname(file.name).toLowerCase();
@@ -50,39 +51,27 @@ export async function submitContribution(
     };
   }
 
-  const uploadDirectory = path.join(process.cwd(), "public", "contributions");
-  await mkdir(uploadDirectory, { recursive: true });
-
   const safeContributor = toSlug(contributor) || "guest";
   const safeTitle = toSlug(title) || "command";
   const timestamp = Date.now();
   const documentName = `${safeTitle}-${safeContributor}-${timestamp}${extension}`;
-  const metadataName = `${safeTitle}-${safeContributor}-${timestamp}.json`;
+  const documentUrl = await saveContribution({
+    documentName,
+    file,
+    metadata: {
+      contributor,
+      title,
+      notes,
+      originalFileName: file.name,
+      storedFileName: documentName,
+      submittedAt: new Date(timestamp).toISOString(),
+    },
+  });
 
-  const fileBuffer = Buffer.from(await file.arrayBuffer());
-  const documentPath = path.join(uploadDirectory, documentName);
-  const metadataPath = path.join(uploadDirectory, metadataName);
-
-  await writeFile(documentPath, fileBuffer);
-  await writeFile(
-    metadataPath,
-    JSON.stringify(
-      {
-        contributor,
-        title,
-        notes,
-        originalFileName: file.name,
-        storedFileName: documentName,
-        submittedAt: new Date(timestamp).toISOString(),
-      },
-      null,
-      2
-    ),
-    "utf8"
-  );
+  revalidatePath("/commands");
 
   return {
     success: "Contribution uploaded successfully.",
-    filePath: `/contributions/${documentName}`,
+    filePath: documentUrl,
   };
 }

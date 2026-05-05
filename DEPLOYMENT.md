@@ -99,10 +99,13 @@ set PORT=4000 && npm run start
 Create a `.env.local` file for local secrets:
 
 ```bash
-MY_SECRET_KEY=your_value_here
+SUPERADMIN_PASSWORD=change_this_password
+BLOB_READ_WRITE_TOKEN=vercel_blob_rw_token_for_persistent_uploads
 ```
 
-Use the same variables in your hosting provider dashboard when deploying.
+Use the same variables in your hosting provider dashboard when deploying. The
+contribution upload feature stores files in `public/contributions` locally, and
+uses Vercel Blob when `BLOB_READ_WRITE_TOKEN` is configured.
 
 ## Recommended Deployment Checklist
 

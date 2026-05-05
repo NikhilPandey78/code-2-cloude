@@ -1,9 +1,8 @@
 "use server";
 
-import { unlink } from "node:fs/promises";
-import path from "node:path";
 import { revalidatePath } from "next/cache";
 import { isSuperadmin } from "../superadmin/auth";
+import { deleteContributionFiles } from "../contribute/contributions";
 
 export async function deleteContribution(formData: FormData) {
   const superadmin = await isSuperadmin();
@@ -19,16 +18,7 @@ export async function deleteContribution(formData: FormData) {
     throw new Error("Missing contribution file details.");
   }
 
-  const contributionDirectory = path.join(
-    process.cwd(),
-    "public",
-    "contributions"
-  );
-
-  await Promise.allSettled([
-    unlink(path.join(contributionDirectory, storedFileName)),
-    unlink(path.join(contributionDirectory, metadataFileName)),
-  ]);
+  await deleteContributionFiles(storedFileName, metadataFileName);
 
   revalidatePath("/commands");
 }

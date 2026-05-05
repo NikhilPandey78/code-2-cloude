@@ -127,7 +127,7 @@ export default function GlobalSearch() {
               {query && filteredResults.length === 0 ? (
                 <div className={styles.noResults}>
                   <div className={styles.noResultsIcon}>🔎</div>
-                  <p>No results found for "{query}"</p>
+                  <p>No results found for &quot;{query}&quot;</p>
                   <small>Try searching for: npm, Docker, Python, etc.</small>
                 </div>
               ) : query ? (
@@ -173,7 +173,7 @@ export default function GlobalSearch() {
                 <div className={styles.suggestedSection}>
                   <div className={styles.suggestedTitle}>Popular Commands</div>
                   <div className={styles.suggestedGrid}>
-                    {commandCards.slice(0, 6).map((result, idx) => (
+                    {commandCards.slice(0, 6).map((result) => (
                       <Link
                         key={result.slug}
                         href={getHref(result.slug)}

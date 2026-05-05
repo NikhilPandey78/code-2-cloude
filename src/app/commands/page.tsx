@@ -108,7 +108,7 @@ export default async function CommandsPage() {
                   <h2>{record.title}</h2>
                   <p>{record.notes}</p>
                   <Link
-                    href={`/contributions/${record.storedFileName}`}
+                    href={record.documentUrl}
                     className={styles.viewButton}
                     target="_blank"
                     rel="noreferrer"

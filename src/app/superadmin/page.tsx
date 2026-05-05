@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import sharedStyles from "../section-page.module.css";
 import styles from "./page.module.css";
 import SuperadminLoginForm from "./SuperadminLoginForm";
@@ -34,9 +35,9 @@ export default async function SuperadminPage() {
                 contributions from the commands page.
               </p>
               <div className={styles.actions}>
-                <a href="/commands" className={styles.secondaryButton}>
+                <Link href="/commands" className={styles.secondaryButton}>
                   Go to Commands
-                </a>
+                </Link>
                 <form action={logoutSuperadmin}>
                   <button type="submit" className={styles.submitButton}>
                     Logout Superadmin
